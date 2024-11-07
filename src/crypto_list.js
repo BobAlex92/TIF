@@ -56,7 +56,7 @@ function isEthereumExclusive(coin) {
 }
 
 
-  useEffect(() => {
+useEffect(() => {
   const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=200&page=1';
 
   fetch(url)
@@ -71,20 +71,19 @@ function isEthereumExclusive(coin) {
         const wrapped = isWrapped(coin);
         const unstable = isUnstable(coin);
         const ethereumNetwork = isEthereumExclusive(coin);
-         
-        // Return the coin only if it's not wrapped, it's unstable, and it's on Ethereum
+
         return (!wrapped && unstable && ethereumNetwork) ? coin : null;
       }));
 
-      // Filter out null values and set the state with filtered results
       setCryptos(filteredData.filter(Boolean));
       setLoading(false);
     })
     .catch(error => {
-      console.error('Error fetching data:', error);
+      console.error('Error fetching data from CoinGecko:', error);
       setLoading(false);
     });
 }, []);
+
 
 
 
