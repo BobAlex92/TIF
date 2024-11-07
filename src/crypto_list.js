@@ -57,9 +57,10 @@ function isEthereumExclusive(coin) {
 
 
 useEffect(() => {
-  console.log("Using API URL:", url);
+
 
   const url = process.env.REACT_APP_API_URL;
+  console.log("Using API URL:", url);
 
   fetch(url)
     .then(response => {
