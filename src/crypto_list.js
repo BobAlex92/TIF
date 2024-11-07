@@ -55,33 +55,34 @@ function isEthereumExclusive(coin) {
   return coin.platforms && coin.platforms.ethereum;
 }
 
-useEffect(() => {
-  fetch('http://localhost:5000/proxy', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      url: 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=200&page=1'
-    })
-  })
-  .then(response => response.json())
-  .then(async data => {
-    const filteredData = await Promise.all(data.map(async (coin) => {
-      const wrapped = isWrapped(coin);
-      const unstable = isUnstable(coin);
-      const ethereumNetwork = isEthereumExclusive(coin);
-       
-      // Return the coin only if it's not wrapped, it's unstable, and it's on Ethereum
-      return (!wrapped && unstable && isEthereumExclusive) ? coin : null;
-    }));
+  useEffect(() => {
+  const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=200&page=1';
 
-    // Filter out null values and set the state with filtered results
-    setCryptos(filteredData.filter(Boolean));
-    setLoading(false);
-  })
-  .catch(error => {
-    console.error('Error fetching data:', error);
-    setLoading(false);
-  });
+  fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok " + response.statusText);
+      }
+      return response.json();
+    })
+    .then(async data => {
+      const filteredData = await Promise.all(data.map(async (coin) => {
+        const wrapped = isWrapped(coin);
+        const unstable = isUnstable(coin);
+        const ethereumNetwork = isEthereumExclusive(coin);
+         
+        // Return the coin only if it's not wrapped, it's unstable, and it's on Ethereum
+        return (!wrapped && unstable && ethereumNetwork) ? coin : null;
+      }));
+
+      // Filter out null values and set the state with filtered results
+      setCryptos(filteredData.filter(Boolean));
+      setLoading(false);
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+      setLoading(false);
+    });
 }, []);
 
 
