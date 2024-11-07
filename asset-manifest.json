@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/TIF/static/css/main.567f4450.css",
-    "main.js": "/TIF/static/js/main.5fb45626.js",
+    "main.js": "/TIF/static/js/main.bc3e2c5f.js",
     "static/js/488.a96754d5.chunk.js": "/TIF/static/js/488.a96754d5.chunk.js",
     "static/media/tif-logo-png.png": "/TIF/static/media/tif-logo-png.01d0ed029eb6b2c93a66.png",
     "index.html": "/TIF/index.html",
     "main.567f4450.css.map": "/TIF/static/css/main.567f4450.css.map",
-    "main.5fb45626.js.map": "/TIF/static/js/main.5fb45626.js.map",
+    "main.bc3e2c5f.js.map": "/TIF/static/js/main.bc3e2c5f.js.map",
     "488.a96754d5.chunk.js.map": "/TIF/static/js/488.a96754d5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.567f4450.css",
-    "static/js/main.5fb45626.js"
+    "static/js/main.bc3e2c5f.js"
   ]
 }
