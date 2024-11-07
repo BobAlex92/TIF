@@ -1,17 +1,18 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Ensure Routes is imported
-import CryptoList from './crypto_list';
-import LandingPage from './LandingPage';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import LandingPage from "./src/LandingPage"; // Adjust the import path as needed
 
 function App() {
   return (
-    <Router>
+    <Router basename="/TIF">
       <Routes>
-          <Route path="/crypto_list" element={<CryptoList />} />
+        {/* This will make LandingPage the default route */}
         <Route path="/" element={<LandingPage />} />
+        {/* Add other routes here if needed */}
       </Routes>
     </Router>
   );
 }
 
 export default App;
+
