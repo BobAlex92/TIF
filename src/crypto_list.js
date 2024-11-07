@@ -102,15 +102,6 @@ function isEthereumExclusive(coin) {
   const filteredCoins = cryptos.filter(coin => coin.name.toLowerCase().includes(searchTerm.toLowerCase()));
   const displayedCoins = showAll ? filteredCoins : filteredCoins.slice(0, 10);
 
-
-
-
-
-
-
-
-
-
   return (
     <ul className="crypto-list">
       <div className="search-and-select-container">
