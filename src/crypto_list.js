@@ -57,7 +57,7 @@ function isEthereumExclusive(coin) {
 
 
 useEffect(() => {
-  const url = 'http://localhost:5000/api/cryptos';
+  const url = process.env.REACT_APP_API_URL;
 
   fetch(url)
     .then(response => {
