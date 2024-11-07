@@ -57,7 +57,7 @@ function isEthereumExclusive(coin) {
 
 
 useEffect(() => {
-  const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=200&page=1';
+  const url = 'http://localhost:5000/api/cryptos';
 
   fetch(url)
     .then(response => {
@@ -66,23 +66,16 @@ useEffect(() => {
       }
       return response.json();
     })
-    .then(async data => {
-      const filteredData = await Promise.all(data.map(async (coin) => {
-        const wrapped = isWrapped(coin);
-        const unstable = isUnstable(coin);
-        const ethereumNetwork = isEthereumExclusive(coin);
-
-        return (!wrapped && unstable && ethereumNetwork) ? coin : null;
-      }));
-
-      setCryptos(filteredData.filter(Boolean));
+    .then(data => {
+      setCryptos(data.filter(Boolean));
       setLoading(false);
     })
     .catch(error => {
-      console.error('Error fetching data from CoinGecko:', error);
+      console.error('Error fetching data from the proxy:', error);
       setLoading(false);
     });
 }, []);
+
 
 
 
