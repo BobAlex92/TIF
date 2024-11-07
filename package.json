@@ -1,7 +1,7 @@
 {
   "name": "my-crypto-app",
   "version": "1.0.0",
-  "homepage": "https://BobAlex92.github.io/TIF/src/LandingPage.js",
+  "homepage": "https://BobAlex92.github.io/TIF/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
