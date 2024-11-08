@@ -38,8 +38,6 @@ function isUnstable(coin) {
   );
 }
 
-
-
 function CryptoList() {
   const [cryptos, setCryptos] = useState([]);
   const [showAll, setShowAll] = useState(false);
